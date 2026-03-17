@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a0a1a;
+            --accent-color: #ff9900;
+            --text-color: #fff;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .nav-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-bar ul li {
+            margin-right: 20px;
+        }
+        .nav-bar ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.2s ease;
+        }
+        .nav-bar ul li a:hover {
+            color: var(--accent-color);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .hero button {
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .hero button:hover {
+            background: linear-gradient(to right, #ffa07a, #ffd700);
+        }
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .stats-bar div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stats-bar div h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .stats-bar div p {
+            font-size: 14px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feature-card {
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        .feature-card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            font-size: 14px;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image-gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .testimonial-card {
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .testimonial-card h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .testimonial-card p {
+            font-size: 14px;
+        }
+        .cta-section {
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+            padding: 20px;
+            text-align: center;
+        }
+        .cta-section button {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .cta-section button:hover {
+            background: linear-gradient(to right, #ffa07a, #ffd700);
+            color: var(--primary-color);
+        }
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .footer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        .footer ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.2s ease;
+        }
+        .footer ul li a:hover {
+            color: var(--accent-color);
+        }
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-bar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-bar ul li {
+                margin-bottom: 10px;
+            }
+            .hero {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stats-bar div {
+                margin-bottom: 20px;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-card {
+                margin: 10px;
+            }
+            .image-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-gallery img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                margin: 10px;
+                border-radius: 10px;
+            }
+            .testimonials {
+                flex-direction: column;
+                align-items: center;
+            }
+            .testimonial-card {
+                margin: 10px;
+            }
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .fade-in {
+            animation: fade-in 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h1>Luxury Hotel</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero" id="home">
+        <h1>Welcome to Luxury Hotel</h1>
+        <p>Experience the ultimate in luxury and comfort</p>
+        <button>Book Now</button>
+        <button>Learn More</button>
+    </section>
+    <section class="stats-bar">
+        <div>
+            <h2>1000+</h2>
+            <p>Rooms Available</p>
+        </div>
+        <div>
+            <h2>500+</h2>
+            <p>Staff Members</p>
+        </div>
+        <div>
+            <h2>100+</h2>
+            <p>Awards Won</p>
+        </div>
+    </section>
+    <section class="features" id="features">
+        <div class="feature-card">
+            <h2>Free Wi-Fi</h2>
+            <p>Stay connected with our high-speed internet</p>
+        </div>
+        <div class="feature-card">
+            <h2>24/7 Room Service</h2>
+            <p>Enjoy our delicious meals and drinks at any time</p>
+        </div>
+        <div class="feature-card">
+            <h2>Spa and Fitness Center</h2>
+            <p>Relax and rejuvenate with our world-class facilities</p>
+        </div>
+    </section>
+    <section class="image-gallery" id="gallery">
+        <img src="https://images.unsplash.com/photo-1663147737123-9cbd239fc3b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwxfHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="a street sign on a bridge" loading="lazy" object-fit="cover">
+        <img src="https://images.unsplash.com/photo-1551020689-7571cf0fd010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwyfHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="view of large white building during daytime" loading="lazy" object-fit="cover">
+        <img src="https://images.unsplash.com/photo-1516382591264-2c98a0aa2a98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHwzfHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Hotel Empire building" loading="lazy" object-fit="cover">
+        <img src="https://images.unsplash.com/photo-1646974400439-321c4a9240b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHw0fHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="a living area with a couch, chair, table, and windows" loading="lazy" object-fit="cover">
+        <img src="https://images.unsplash.com/photo-1585349781000-d086e113b2a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHw1fHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="blue and red glass building during night time" loading="lazy" object-fit="cover">
+        <img src="https://images.unsplash.com/photo-1497128742402-653a7e07f344?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTc4NDh8MHwxfHNlYXJjaHw2fHxidWlsZCUyMG1lJTIwYSUyMGx1eHVyeSUyMGhvdGVsJTIwd2Vic2l0ZXxlbnwwfDB8fHwxNzczNzQyNTkyfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="tabletop lamp beside laptop on desk beside window" loading="lazy" object-fit="cover">
+    </section>
+    <section class="testimonials" id="testimonials">
+        <div class="testimonial-card">
+            <h2>John Doe</h2>
+            <p>Luxury Hotel is the best hotel I've ever stayed at. The staff is friendly and the rooms are clean and comfortable.</p>
+        </div>
+        <div class="testimonial-card">
+            <h2>Jane Smith</h2>
+            <p>I was impressed by the hotel's amenities and services. The spa and fitness center are top-notch.</p>
+        </div>
+        <div class="testimonial-card">
+            <h2>Bob Johnson</h2>
+            <p>The hotel's location is perfect for exploring the city. The rooms are spacious and well-appointed.</p>
+        </div>
+    </section>
+    <section class="cta-section">
+        <button>Book Now</button>
+    </section>
+    <footer class="footer">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </footer>
+    <script>
+        // Add event listener to nav bar links
+        document.querySelectorAll('.nav-bar ul li a').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
